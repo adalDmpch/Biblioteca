@@ -3,28 +3,39 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
     public function index()
     {
-        // Devuelve la vista de contacto
-        return view('contact');
+        return view('contacto');
     }
 
     public function submit(Request $request)
     {
-        // Procesar la lógica de envío del formulario de contacto
-        // Ejemplo: Validar y guardar datos en la base de datos
-        $validated = $request->validate([
-            'nombre' => 'required|string|max:255',
-            'correo' => 'required|email',
-            'asunto' => 'required|string|max:255',
-            'mensaje' => 'required|string',
-        ]);
+        try {
+            $validated = $request->validate([
+                'nombre' => 'required|string|max:100',
+                'correo' => 'required|email|max:100',
+                'asunto' => 'required|string|max:200',
+                'mensaje' => 'required|string'
+            ]);
 
-        // Lógica para manejar los datos, como enviarlos por correo o guardarlos
-        // Aquí podrías redirigir o retornar una respuesta.
-        return back()->with('success', '¡Gracias por contactarnos!');
+            DB::table('mensajes')->insert([
+                'nombre' => $request->nombre,
+                'correo' => $request->correo,
+                'motivo' => $request->asunto,
+                'mensaje' => $request->mensaje,
+                'fecha_envio' => now()
+            ]);
+
+            return back()->with('success', '¡Gracias por contactarnos! Tu mensaje ha sido enviado exitosamente.');
+
+        } catch (\Exception $e) {
+            return back()
+                ->with('error', 'Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente.')
+                ->withInput();
+        }
     }
 }

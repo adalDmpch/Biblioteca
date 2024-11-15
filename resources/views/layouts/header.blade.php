@@ -1,5 +1,3 @@
-<!-- resources/views/layouts/header.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,14 +35,53 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="/" class="nav-item nav-link active">Inicio</a>
-                        <a href="/books" class="nav-item nav-link">Libros</a>
-                        <a href="{{ route('contacto') }}"  class="nav-item nav-link">Contacto</a>
-                        <a href="/login" class="nav-item nav-link">Inicio de Sesion</a>
+                        <a href="/" class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}">Inicio</a>
+                        <a href="/books" class="nav-item nav-link {{ request()->is('books') ? 'active' : '' }}">Libros</a>
+                        <a href="{{ route('contacto') }}" class="nav-item nav-link {{ request()->routeIs('contacto') ? 'active' : '' }}">Contacto</a>
+                        
+                        @guest
+                            <a href="{{ route('login') }}" class="nav-item nav-link {{ request()->routeIs('login') ? 'active' : '' }}">
+                                <i class="fas fa-user mr-2"></i>Inicio de Sesión
+                            </a>
+                        @else
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fas fa-user-circle mr-2"></i>{{ Auth::user()->name }}
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow-sm">
+                                    <a href="{{ route('profile') }}" class="dropdown-item">
+                                        <i class="fas fa-user mr-2"></i>Mi Perfil
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item text-danger">
+                                            <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        @endguest
                     </div>
                 </div>
             </nav>
         </div>
     </div>
     <!-- Navbar End -->
-    <br><br><br>
+
+    <!-- Espaciador para compensar el navbar fijo -->
+    <div style="margin-top: 90px;"></div>
+
+    <!-- Scripts necesarios para el funcionamiento del dropdown -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+    // Activar los dropdowns de Bootstrap
+    $(document).ready(function() {
+        $('.dropdown-toggle').dropdown();
+    });
+    </script>
+</body>
+</html>
