@@ -23,6 +23,11 @@ Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'sh
 // Ruta para procesar el registro de usuario
 Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 
+// vista del registro
+Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +42,4 @@ Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'r
 Route::get('/', function () {
     return view('login');
 });
+

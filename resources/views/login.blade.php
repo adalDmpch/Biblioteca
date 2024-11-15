@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicia sesión</title>
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}" >
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
 
