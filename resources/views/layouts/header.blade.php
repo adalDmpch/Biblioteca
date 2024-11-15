@@ -39,7 +39,8 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="/" class="nav-item nav-link active">Inicio</a>
                         <a href="/books" class="nav-item nav-link">Libros</a>
-                        <a href="/contact" class="nav-item nav-link">Contacto</a>
+                        <a href="{{ route('contact') }}" class="nav-item nav-link">Contacto</a>
+
                         <a href="/login" class="nav-item nav-link">Inicio de Sesion</a>
                     </div>
                 </div>

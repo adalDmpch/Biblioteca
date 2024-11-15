@@ -20,6 +20,7 @@ Route::post('password/reset', [App\Http\Controllers\Auth\ResetPasswordController
 // Rutas para el registro de usuarios
 Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 
 
@@ -41,3 +42,6 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
