@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::get('auth/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::post('auth/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 
 // Ruta para mostrar el formulario de recuperación de contraseña
 Route::get('password/reset', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
@@ -17,15 +17,10 @@ Route::get('password/reset/{token}', [App\Http\Controllers\Auth\ResetPasswordCon
 
 // Ruta para realizar el cambio de contraseña
 Route::post('password/reset', [App\Http\Controllers\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
-// Ruta para mostrar el formulario de registro
-Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
-
-// Ruta para procesar el registro de usuario
-Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
-
-// vista del registro
+// Rutas para el registro de usuarios
 Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
+
 
 
 /*
@@ -38,8 +33,11 @@ Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'r
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('login');
+    return view('welcome');
+});
+
+Route::get('/login', function () {
+    return view('auth.login');
 });
 
