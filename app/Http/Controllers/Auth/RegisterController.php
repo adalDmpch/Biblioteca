@@ -52,12 +52,10 @@ class RegisterController extends Controller
                 'activo' => true
             ]);
 
-            // Obtener el usuario recién creado
             $user = DB::table('usuarios')
                      ->where('email', $request->email)
                      ->first();
 
-            // Iniciar sesión
             if ($user) {
                 auth()->loginUsingId($user->id);
                 return redirect()->route('home')
