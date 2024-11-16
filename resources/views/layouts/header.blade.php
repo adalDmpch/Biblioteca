@@ -46,26 +46,43 @@
                         <a href="{{ route('home') }}" class="nav-item nav-link {{ request()->routeIs('home') ? 'active' : '' }}">
                             <i class="fas fa-home mr-2"></i>Inicio
                         </a>
-                        <a href="{{ route('books') }}" class="nav-item nav-link {{ request()->routeIs('books') ? 'active' : '' }}">
-                            <i class="fas fa-book mr-2"></i>Libros
-                        </a>
+
+                        @auth
+                            <a href="{{ route('books') }}" class="nav-item nav-link {{ request()->routeIs('books') ? 'active' : '' }}">
+                                <i class="fas fa-book mr-2"></i>Libros
+                            </a>
+                        @endauth
+
                         <a href="{{ route('contacto') }}" class="nav-item nav-link {{ request()->routeIs('contacto') ? 'active' : '' }}">
                             <i class="fas fa-envelope mr-2"></i>Contacto
                         </a>
                         
                         @guest
                             <a href="{{ route('login') }}" class="nav-item nav-link {{ request()->routeIs('login') ? 'active' : '' }}">
-                                <i class="fas fa-user mr-2"></i>Inicio de Sesión
+                                <i class="fas fa-sign-in-alt mr-2"></i>Inicio de Sesión
                             </a>
                         @else
+                            @if(Auth::user()->rol_id == 1)
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fas fa-cogs mr-2"></i>Administración
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right shadow-sm">
+                                        <a href="{{ route('admin.books.index') }}" class="dropdown-item">
+                                            <i class="fas fa-book mr-2"></i>Gestionar Libros
+                                        </a>
+                                        <a href="{{ route('admin.books.create') }}" class="dropdown-item">
+                                            <i class="fas fa-plus mr-2"></i>Agregar Libro
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                                     <i class="fas fa-user-circle mr-2"></i>{{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right shadow-sm">
-                                    <a href="{{ route('profile') }}" class="dropdown-item">
-                                        <i class="fas fa-user mr-2"></i>Mi Perfil
-                                    </a>
                                     <div class="dropdown-divider"></div>
                                     <form action="{{ route('logout') }}" method="POST" class="logout-form">
                                         @csrf
@@ -81,27 +98,23 @@
             </nav>
         </div>
     </div>
-    <!-- Navbar End -->
-
-    <!-- Espaciador para el navbar fijo -->
+    
     <div style="margin-top: 90px;"></div>
 
-    <!-- Contenido principal -->
+
     <main>
         @yield('content')
     </main>
 
-    <!-- Scripts -->
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
     $(document).ready(function() {
-        // Activar dropdowns
         $('.dropdown-toggle').dropdown();
 
-        // Manejar el cierre de sesión
         $('.logout-form').on('submit', function(e) {
             e.preventDefault();
             $.ajax({
@@ -118,8 +131,6 @@
         });
     });
     </script>
-
-    <!-- Scripts adicionales -->
     @stack('scripts')
 </body>
 </html>

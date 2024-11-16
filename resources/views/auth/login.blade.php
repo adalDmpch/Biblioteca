@@ -14,7 +14,6 @@
         <div class="row">
             <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
                 <div class="panel border bg-white">
-                    <!-- Mensajes de error y éxito -->
                     @if (session('success'))
                         <div class="alert alert-success alert-dismissible fade show">
                             {{ session('success') }}
@@ -81,7 +80,7 @@
                                 <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <label for="remember" class="text-muted">Recordar contraseña</label>
                                 <a class="text-decoration-none text-success ml-auto" 
-                                   href="{{ route('password.request') }}" 
+                                   href="/" 
                                    id="forgot">¿Recuperar contraseña?</a>
                             </div>
                             <button class="btn btn-success btn-block mt-3" type="submit">Ingresar</button>
@@ -117,7 +116,6 @@
         }
     }
 
-    // Cerrar alertas automáticamente después de 5 segundos
     window.setTimeout(function() {
         $(".alert").fadeTo(500, 0).slideUp(500, function(){
             $(this).remove(); 

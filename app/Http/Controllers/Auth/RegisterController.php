@@ -19,7 +19,7 @@ class RegisterController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'name' => ['required', 'string', 'max:100', 'regex:/^[a-zA-Z\s]+$/'],
+                'name' => ['required', 'string', 'max:50', 'regex:/^[a-zA-Z\s]+$/'],
                 'username' => ['required', 'string', 'max:15', 'regex:/^[a-zA-Z0-9]+$/', 'unique:usuarios'],
                 'number' => ['required', 'string', 'size:10', 'regex:/^[0-9]{10}$/'],
                 'email' => ['required', 'string', 'email', 'max:100', 'unique:usuarios'],
@@ -36,17 +36,17 @@ class RegisterController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return back()
-                    ->withErrors($validator)
-                    ->withInput();
+                return back()->withErrors($validator)->withInput();
             }
 
+            // Insertar usuario con rol_id = 2 (usuario normal)
             DB::table('usuarios')->insert([
                 'name' => $request->name,
                 'username' => $request->username,
                 'number' => $request->number,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'rol_id' => 2, // rol de usuario
                 'fecha_registro' => now(),
                 'activo' => true
             ]);

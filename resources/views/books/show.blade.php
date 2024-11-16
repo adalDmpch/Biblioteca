@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.header')
 
 @section('title', $libro->titulo . ' - Jaydey')
 
@@ -6,8 +6,8 @@
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-4">
-            <img src="{{ asset('images/' . $libro->imagen_portada) }}" 
-                 alt="{{ $libro->titulo }}" 
+            <img  src="{{ asset('images/books/' . ($libro->imagen_portada ?? 'default.jpg')) }}" 
+            alt="{{ $libro->titulo }}"  
                  class="img-fluid rounded shadow-sm">
         </div>
         <div class="col-lg-8">

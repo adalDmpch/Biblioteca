@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.header')
 
 @section('title', 'Libros - Jaydey')
 
@@ -10,21 +10,15 @@
             <h1>Explora Nuestra Colección de Libros</h1>
         </div>
         
-        @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
-
         <div class="row">
             @foreach($libros as $libro)
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100 border-0 shadow-sm">
-                        <img class="card-img-top" src="{{ asset('images/' . $libro->imagen_portada) }}" 
-                             alt="{{ $libro->titulo }}" style="height: 300px; object-fit: cover;">
+                        <img class="card-img-top" 
+                             src="{{ asset('images/books/' . ($libro->imagen_portada ?? 'default.jpg')) }}" 
+                             alt="{{ $libro->titulo }}" 
+                             style="height: 300px; object-fit: cover;"
+                             onerror="this.src='{{ asset('images/books/default.jpg') }}'">
                         <div class="card-body">
                             <h5 class="card-title">{{ $libro->titulo }}</h5>
                             <p class="card-text text-muted mb-2">
@@ -63,6 +57,9 @@
 }
 .card:hover {
     transform: translateY(-5px);
+}
+.card-img-top {
+    background-color: #f8f9fa;
 }
 </style>
 @endpush

@@ -26,24 +26,24 @@ class LoginController extends Controller
                 'password.required' => 'La contraseña es obligatoria'
             ]);
 
-            // Obtener usuario de la base de datos
             $user = DB::table('usuarios')
-                     ->where('email', $request->email)
-                     ->where('activo', true)
+                     ->join('roles', 'usuarios.rol_id', '=', 'roles.id')
+                     ->select('usuarios.*', 'roles.nombre as rol')
+                     ->where('usuarios.email', $request->email)
+                     ->where('usuarios.activo', true)
                      ->first();
 
             if ($user && password_verify($request->password, $user->password)) {
-                // Iniciar sesión
                 Auth::loginUsingId($user->id);
+                session(['rol' => $user->rol]); 
                 
-                // Si el usuario marcó "recordarme"
                 if ($request->has('remember')) {
-                    return redirect()->intended('/')
+                    return redirect()->intended($user->rol === 'admin' ? '/admin' : '/')
                                    ->withCookie(cookie('email', $request->email, 45000))
                                    ->with('success', '¡Bienvenido de nuevo!');
                 }
 
-                return redirect()->intended('/')
+                return redirect()->intended($user->rol === 'admin' ? '/' : '/')
                                ->with('success', '¡Bienvenido de nuevo!');
             }
 
@@ -58,9 +58,11 @@ class LoginController extends Controller
         }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect('/')->with('success', '¡Hasta pronto!');
     }
 }
