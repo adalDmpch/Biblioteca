@@ -60,3 +60,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin/books')->name('admin.books.'
 Route::get('/offline', function () {
     return view('vendor.laravelpwa.offline');
 });
+
+Route::get('/desarrolladores', function () {
+    return view('informacion');
+})->name('informacion');

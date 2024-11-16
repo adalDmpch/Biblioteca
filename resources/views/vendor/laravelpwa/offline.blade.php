@@ -5,7 +5,7 @@
     <div class="text-center">
         <h1 class="display-4 text-muted mb-4">Sin conexión a Internet, por favor intenta de nuevo mas tarde</h1>
         <p class="lead">Parece que no tienes conexión a internet.</p>
-        <img src="{{ asset('images/Jaydey-72X72.png') }}" alt="Offline" class="img-fluid mb-4" style="max-width: 300px;">
+        <img src="{{ asset('images/icons/Jaydey-72X72.png') }}" alt="Offline" class="img-fluid mb-4" style="max-width: 300px;">
         <div>
             <button onclick="window.location.reload()" class="btn btn-primary">
                 <i class="fas fa-sync-alt mr-2"></i>Intentar de nuevo
