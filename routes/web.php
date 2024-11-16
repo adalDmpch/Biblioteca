@@ -56,3 +56,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin/books')->name('admin.books.'
     Route::put('/{id}', [AdminBookController::class, 'update'])->name('update');
     Route::delete('/{id}', [AdminBookController::class, 'destroy'])->name('destroy');
 });
+
+Route::get('/offline', function () {
+    return view('vendor.laravelpwa.offline');
+});

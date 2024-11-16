@@ -26,9 +26,10 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-
+@laravelPWA
     <!-- Estilos adicionales -->
     @stack('styles')
+
 </head>
 <body>
     <!-- Navbar Start -->
@@ -133,4 +134,17 @@
     </script>
     @stack('scripts')
 </body>
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js')
+                .then(function(registration) {
+                    console.log('ServiceWorker registration successful');
+                })
+                .catch(function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+        });
+    }
+</script>
 </html>
