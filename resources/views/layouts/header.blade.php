@@ -30,7 +30,7 @@
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
                 <a href="/" class="navbar-brand">
-                    <h1 class="m-0 text-primary"><span class="text-dark">JAYD</span>EY</h1>
+                    <h1 class="m-0 text-success"><span class="text-dark">JAYD</span>EY</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -39,8 +39,7 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="/" class="nav-item nav-link active">Inicio</a>
                         <a href="/books" class="nav-item nav-link">Libros</a>
-                        <a href="{{ route('contact') }}" class="nav-item nav-link">Contacto</a>
-
+                        <a href="{{ route('contacto') }}"  class="nav-item nav-link">Contacto</a>
                         <a href="/login" class="nav-item nav-link">Inicio de Sesion</a>
                     </div>
                 </div>

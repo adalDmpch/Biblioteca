@@ -75,10 +75,10 @@ input[type='password'] {
 }
 
 img {
-    width: 10px;
-    height: 10px;
+    width: 40px;
+    height: 40px;
     object-fit: cover;
-    border-radius: 10%;
+    border-radius: 50%;
     position: relative
 }
 

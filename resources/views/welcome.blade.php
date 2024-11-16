@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="//css/home.css">
+<link rel="stylesheet" href="/css/home.css">
 
     @yield('head')
     @include('layouts.header')
@@ -32,7 +32,7 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">Jaydey</h4>
                             <h1 class="display-3 text-white mb-md-4">Los Sueños Escritos En Papel</h1>
-                            <a id="miElemento" href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Disfruta de un buen libro</a>
+                            <a id="miElemento" href="" class="btn btn-success py-md-3 px-md-5 mt-2">Disfruta de un buen libro</a>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">Jaydey</h4>
                             <h1 class="display-3 text-white mb-md-4">Una Pelicula Nunca Superara a Su Libro</h1>
-                            <a href="" id="miElemento" class="btn btn-primary py-md-3 px-md-5 mt-2">Lee y Difruta</a>
+                            <a href="" id="miElemento" class="btn btn-success py-md-3 px-md-5 mt-2">Lee y Difruta</a>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
             </div>
             <div class="col-lg-6 pt-5 pb-lg-5">
                 <div id="aboutText" class="about-text bg-white p-4 p-lg-5 my-lg-5">
-                    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Unete a Nosotros</h6>
+                    <h6 class="text-success text-uppercase" style="letter-spacing: 5px;">Unete a Nosotros</h6>
                     <h1 class="mb-3">Leer es la mejor forma de Nutrir el alma</h1>
                     <p>Descubre un mundo de conocimiento y aventuras literarias. Regístrate ahora para explorar nuestra selección de los mejores libros que transformarán tu experiencia de lectura. ¡Sumérgete en historias inolvidables y expande tu horizonte con cada página!</p>
                     <div class="row mb-4">
@@ -83,7 +83,7 @@
                             <img class="img-fluid" src="/img/comple2.jpg" alt="">
                         </div>
                     </div>
-                    <a href="/register" class="btn btn-primary mt-1">Registrarse</a>
+                    <a href="/register" class="btn btn-success mt-1">Registrarse</a>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="d-flex mb-4 mb-lg-0">
-                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-success mr-3" style="height: 100px; width: 100px;">
                             <i class="fa fa-2x fa-money-check-alt text-white"></i>
                         </div>
                         <div class="d-flex flex-column">
@@ -108,7 +108,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex mb-4 mb-lg-0">
-                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-success mr-3" style="height: 100px; width: 100px;">
                             <i class="fa fa-2x fa-award text-white"></i>
                         </div>
                         <div class="d-flex flex-column">
@@ -119,7 +119,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex mb-4 mb-lg-0">
-                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-success mr-3" style="height: 100px; width: 100px;">
                             <i class="fa fa-2x fa-globe text-white"></i>
                         </div>
                         <div class="d-flex flex-column">
@@ -137,7 +137,7 @@
     <div class="container-fluid">
         <div class="container">
             <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Categorias</h6>
+                <h6 class="text-success text-uppercase" style="letter-spacing: 5px;">Categorias</h6>
                 <h1>Explora tus categorias favoritas</h1>
             </div>
             <div class="row">
@@ -205,7 +205,7 @@
     <div class="container-fluid py-2">
         <div class="container pt-1">
             <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">LIBROS</h6>
+                <h6 class="text-success text-uppercase" style="letter-spacing: 5px;">LIBROS</h6>
                 <h1>LOS MEJORES LIBROS</h1>
             </div>
             <div class="row">
@@ -214,12 +214,13 @@
                         <img class="img-fluid" src="/img/LIBRO01.jpg" alt="">
                         <div class="p-4">
                             <div class="d-flex justify-content-between mb-3">
-                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>29834 lectores</small>
+                                <small class="m-0"><i class="fa fa-user text-success mr-2"></i>29834 lectores</small>
                             </div>
-                            <a class="h5 text-decoration-none" href="">El exito solo se gana con la lectura</a>
+                            <a class="h5 text-decoration-none text-dark" href="">El éxito solo se gana con la lectura</a>
+
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
-                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(2508)</small></h6>
+                                    <h6 class="m-0"><i class="fa fa-star text-success mr-2"></i>4.5 <small>(2508)</small></h6>
                                     <h5 class="m-0">Gratis</h5>
                                 </div>
                             </div>
@@ -231,12 +232,12 @@
                         <img class="img-fluid" src="/img/LIBRO02.jpg" alt="">
                         <div class="p-4">
                             <div class="d-flex justify-content-between mb-3">
-                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>10234 Lectores</small>
+                                <small class="m-0"><i class="fa fa-user text-success mr-2"></i>10234 Lectores</small>
                             </div>
-                            <a class="h5 text-decoration-none" href="">Las lagrimas son solo para personas debiles </a>
+                            <a class="h5 text-decoration-none text-dark" href="">Las lagrimas son solo para personas debiles </a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
-                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(3434)</small></h6>
+                                    <h6 class="m-0"><i class="fa fa-star text-success mr-2"></i>4.5 <small>(3434)</small></h6>
                                     <h5 class="m-0">$350</h5>
                                 </div>
                             </div>
@@ -248,12 +249,12 @@
                         <img class="img-fluid" src="/img/LIBRO4.jpg" alt="">
                         <div class="p-4">
                             <div class="d-flex justify-content-between mb-3">
-                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>23543 Lectores</small>
+                                <small class="m-0"><i class="fa fa-user text-success mr-2"></i>23543 Lectores</small>
                             </div>
-                            <a class="h5 text-decoration-none" href="">La respuesta se encuentra en un engranaje</a>
+                            <a class="h5 text-decoration-none text-dark" href="">La respuesta se encuentra en un engranaje</a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
-                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.2 <small>(2503)</small></h6>
+                                    <h6 class="m-0"><i class="fa fa-star text-success mr-2"></i>4.2 <small>(2503)</small></h6>
                                     <h5 class="m-0">Gratis</h5>
                                 </div>
                             </div>
@@ -265,12 +266,12 @@
                         <img class="img-fluid" src="/img/LIBRO5.jpg" alt="">
                         <div class="p-4">
                             <div class="d-flex justify-content-between mb-3">
-                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>21543 Lectores</small>
+                                <small class="m-0"><i class="fa fa-user text-success mr-2"></i>21543 Lectores</small>
                             </div>
-                            <a class="h5 text-decoration-none" href="">Un niño tan blanco como la nieve</a>
+                            <a class="h5 text-decoration-none text-dark" href="">Un niño tan blanco como la nieve</a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
-                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.9 <small>(2560)</small></h6>
+                                    <h6 class="m-0"><i class="fa fa-star text-success mr-2"></i>4.9 <small>(2560)</small></h6>
                                     <h5 class="m-0">$350</h5>
                                 </div>
                             </div>
@@ -282,12 +283,12 @@
                         <img class="img-fluid" src="/img/LIBRO6.jpg" alt="">
                         <div class="p-4">
                             <div class="d-flex justify-content-between mb-3">
-                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>34743 lectores</small>
+                                <small class="m-0"><i class="fa fa-user text-success mr-2"></i>34743 lectores</small>
                             </div>
-                            <a class="h5 text-decoration-none" href="">El mundo que anelamos todos</a>
+                            <a class="h5 text-decoration-none text-dark" href="">El mundo que anelamos todos</a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
-                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.2 <small>(2504)</small></h6>
+                                    <h6 class="m-0"><i class="fa fa-star text-success mr-2"></i>4.2 <small>(2504)</small></h6>
                                     <h5 class="m-0">$293</h5>
                                 </div>
                             </div>
@@ -299,12 +300,12 @@
                         <img class="img-fluid" src="/img/LIBRO08.jpg" alt="">
                         <div class="p-4">
                             <div class="d-flex justify-content-between mb-3">
-                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>25675 Lectores</small>
+                                <small class="m-0"><i class="fa fa-user text-success mr-2"></i>25675 Lectores</small>
                             </div>
-                            <a class="h5 text-decoration-none" href="">El poder esta en todos, ser mas que un guerrrero</a>
+                            <a class="h5 text-decoration-none text-dark" href="">El poder esta en todos, ser mas que un guerrrero</a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
-                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.1 <small>(2504)</small></h6>
+                                    <h6 class="m-0"><i class="fa fa-star text-success mr-2"></i>4.1 <small>(2504)</small></h6>
                                     <h5 class="m-0">$Gratis</h5>
                                 </div>
                             </div>
@@ -316,7 +317,7 @@
     </div>
     <!-- Packages End -->
 
-    <button id="toggleTestimonials" class="btn btn-primary mt-1" style="display: block; margin: auto;">Ver Testimonios</button>
+    <button id="toggleTestimonials" class="btn btn-success mt-1" style="display: block; margin: auto;">Ver Testimonios</button>
 
     <div id="testimonialsContainer" class="container-fluid py-5">
 
@@ -324,7 +325,7 @@
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Testimonios</h6>
+                <h6 class="text-success text-uppercase" style="letter-spacing: 5px;">Testimonios</h6>
                 <h1>Lo que dicen nuestros lectores</h1>
             </div>
             <div class="owl-carousel testimonial-carousel">

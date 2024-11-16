@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}" >
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
-
     @include('layouts.header')
 </head>
 
@@ -47,11 +46,11 @@
                             <div class="form-inline">
                                 <input type="checkbox" name="remember" id="remember">
                                 <label for="remember" class="text-muted">Recordar contraseña</label>
-                                <a href="{{ route('password.request') }}" id="forgot" class="font-weight-bold">¿Recuperar contraseña?</a>
+                                <a  class="text-decoration-none text-success " href="{{ route('password.request') }}" id="forgot" class="font-weight-bold">¿Recuperar contraseña?</a>
                             </div>
-                            <button class="btn btn-primary btn-block mt-3" type="submit">Ingresar</button>
-                            <div class="text-center pt-4 text-muted">
-                                ¿No tienes cuenta? <a href="{{ route('register') }}">Crea una cuenta</a>
+                            <button class="btn btn-success btn-block mt-3" type="submit">Ingresar</button>
+                            <div class="text-center text-success pt-4 text-muted">
+                                ¿No tienes cuenta? <a class="text-decoration-none text-success" href="{{ route('register') }}">Crea una cuenta</a>
                             </div>
                         </form>
                     </div>
