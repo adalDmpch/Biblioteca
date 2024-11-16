@@ -61,6 +61,7 @@ Route::get('/offline', function () {
     return view('vendor.laravelpwa.offline');
 });
 
+Route::get('/desarrolladores',[App\Http\Controllers\DesarrolladoresController::class, 'index'])->name('desarrolladores');
 Route::get('/desarrolladores', function () {
     return view('informacion');
-})->name('informacion');
+})->name('desarrolladores');

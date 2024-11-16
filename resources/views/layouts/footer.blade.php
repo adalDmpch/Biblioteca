@@ -22,11 +22,11 @@
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
                         <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Libros</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
+                        <a class="text-white-50 mb-2" href="{{ route('desarrolladores') }}"><i class="fa fa-angle-right mr-2"></i>Desarrolladores</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5">
-                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
+                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Links</h5>
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
                         <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Libros</a>
@@ -44,10 +44,10 @@
     <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
         <div class="row">
             <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                <p class="m-0 text-white-50">Copyright &copy; <a class="h5 text-decoration-none text-success"  href="#">Dominio</a>. Todos los Derechos reservados</p>
+                <p class="m-0 text-white-50">Copyright &copy; <a class="h5 text-decoration-none text-success"  href="#">Jaydey</a>. Todos los Derechos reservados</p>
             </div>
             <div class="col-lg-6 text-center text-md-right">
-                <p class="m-0 text-white-50">Desarrollado por <a class="h5 text-decoration-none text-success" href="https://htmlcodex.com">Jaydey Company</a></p>
+                <p class="m-0 text-white-50">Desarrollado por <a class="h5 text-decoration-none text-success" href="{{ route('desarrolladores') }}">Jaydey Company</a></p>
             </div>
         </div>
     </div>
