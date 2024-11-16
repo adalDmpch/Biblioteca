@@ -41,7 +41,6 @@ class RegisterController extends Controller
                     ->withInput();
             }
 
-            // Crear el usuario
             DB::table('usuarios')->insert([
                 'name' => $request->name,
                 'username' => $request->username,

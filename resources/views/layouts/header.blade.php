@@ -7,20 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Jaydey')</title>
 
+    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Favicon -->
     <link href="{{ asset('img/favicon.ico') }}" rel="icon">
 
+    <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
 
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
+    <!-- Libraries Stylesheet -->
     <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet">
 
+    <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 
+    <!-- Estilos adicionales -->
     @stack('styles')
 </head>
 <body>
@@ -38,7 +45,9 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="{{ route('home') }}" class="nav-item nav-link {{ request()->routeIs('home') ? 'active' : '' }}">
                             <i class="fas fa-home mr-2"></i>Inicio
-                    
+                        </a>
+                        <a href="{{ route('books') }}" class="nav-item nav-link {{ request()->routeIs('books') ? 'active' : '' }}">
+                            <i class="fas fa-book mr-2"></i>Libros
                         </a>
                         <a href="{{ route('contacto') }}" class="nav-item nav-link {{ request()->routeIs('contacto') ? 'active' : '' }}">
                             <i class="fas fa-envelope mr-2"></i>Contacto
