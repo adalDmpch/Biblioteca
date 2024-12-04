@@ -24,10 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const librosContainer = document.getElementById('libros-container');
     const offlineAlert = document.getElementById('offline-alert');
     
-    // Guardamos la ruta de la vista de libros
-    const rutaLibros = "{{ route('books') }}"; // Asegúrate de tener definida esta ruta en Laravel
+    const rutaLibros = "{{ route('books') }}"; 
 
-    // Función para crear una tarjeta de libro
     function crearTarjetaLibro(libro) {
         return `
             <div class="col-lg-4 col-md-6 mb-4">
@@ -61,9 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
-    // Función para manejar la redirección cuando vuelve el internet
     function manejarReconexion() {
-        // Mostramos un mensaje de reconexión
         const reconexionAlert = document.createElement('div');
         reconexionAlert.className = 'alert alert-success text-center fixed-top m-3';
         reconexionAlert.innerHTML = `
@@ -72,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         document.body.appendChild(reconexionAlert);
 
-        // Esperamos 2 segundos antes de redirigir para que el usuario vea el mensaje
         setTimeout(() => {
             window.location.href = rutaLibros;
         }, 2000);
@@ -115,12 +110,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Verificamos el estado inicial
     if (!navigator.onLine) {
         mostrarLibros();
     }
 
-    // Event listeners para cambios en la conectividad
     window.addEventListener('online', function() {
         offlineAlert.style.display = 'none';
         manejarReconexion();
