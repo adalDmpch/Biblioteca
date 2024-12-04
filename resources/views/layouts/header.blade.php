@@ -13,13 +13,7 @@
     @stack('styles')
 </head>
 <body>
-    <noscript>
-        <div class="alert alert-warning text-center" role="alert">
-            Esta aplicación requiere JavaScript para funcionar correctamente.
-        </div>
-    </noscript>
 
-    <!-- Navbar Start -->
     <div class="container-fluid position-fixed nav-bar p-0 fixed-top">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
@@ -93,82 +87,18 @@
         @yield('content')
     </main>
 
-    <script>
-        $(document).ready(function() {
-            $('.dropdown-toggle').dropdown();
+  <script>
+            window.addEventListener('online', handleConnection);
+        window.addEventListener('offline', handleConnection);
 
-            $('.logout-form').on('submit', function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: $(this).attr('action'),
-                    method: 'POST',
-                    data: $(this).serialize(),
-                    success: function(response) {
-                        window.location.href = '{{ route('home') }}';
-                    },
-                    error: function(xhr) {
-                        console.error('Error al cerrar sesión');
-                    }
-                });
-            });
-        });
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', async function() {
-                try {
-                    const registration = await navigator.serviceWorker.register('/serviceworker.js');
-                    console.log('ServiceWorker registrado exitosamente con alcance: ', registration.scope);
-                } catch (err) {
-                    console.log('Error al registrar ServiceWorker: ', err);
-                }
-            });
-        }
-
-        let isOfflinePage = window.location.pathname === '/offline';
-
-        function updateOnlineStatus() {
-            if (!navigator.onLine && !isOfflinePage) {
-                sessionStorage.setItem('lastPage', window.location.href);
-                window.location.href = '/offline';
+        function handleConnection() {
+            if (navigator.onLine) {
+                // 
+            } else{
+                location.replace('/offline');
             }
         }
-
-        window.addEventListener('online', function() {
-            if (isOfflinePage) {
-                const lastPage = sessionStorage.getItem('lastPage');
-                if (lastPage) {
-                    window.location.href = lastPage;
-                } else {
-                    window.location.href = '/';
-                }
-            }
-        });
-        
-        window.addEventListener('offline', updateOnlineStatus);
-        
-        if ('Notification' in window) {
-            Notification.requestPermission().then(function(permission) {
-                if (permission === 'granted') {
-                    if (!navigator.onLine) {
-                        new Notification('Sin conexión', {
-                            body: 'La aplicación está funcionando en modo offline',
-                            icon: '/images/icons/Jaydey-72X72.png'
-                        });
-                    }
-                }
-            });
-        }
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            window.deferredPrompt = e;
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            if (!navigator.onLine && !isOfflinePage) {
-                updateOnlineStatus();
-            }
-        });
-    </script>
-
+  </script>
     @stack('scripts')
 </body>
 </html>
