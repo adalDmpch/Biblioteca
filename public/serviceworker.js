@@ -1,54 +1,71 @@
 var staticCacheName = "pwa-v" + new Date().getTime();
 var filesToCache = [
     '/offline',
-    '/css/app.css',
-    '/css/home.css',
-    '/css/login.css',
-    '/js/app.js',
-    '/images/icons/Jaydey-72X72.png',
-    '/images/icons/Jaydey-96X96.png',
-    '/images/icons/Jaydey-128X128.png',
-    '/images/icons/Jaydey144X144.png',
-    '/images/icons/Jaydey-152X152.png',
-    '/images/icons/Jaydey-192X192.png',
-    '/images/icons/Jaydey-384X384.png',
-    '/images/icons/Jaydey-512X512.png',
+    '/public/css/login.css',
+    '/public/css/home.css',
+    '/images/icons/icon-72x72.png',
+    '/images/icons/icon-96x96.png',
+    '/images/icons/icon-128x128.png',
+    '/images/icons/icon-144x144.png',
+    '/images/icons/icon-152x152.png',
+    '/images/icons/icon-192x192.png',
+    '/images/icons/icon-384x384.png',
+    '/images/icons/icon-512x512.png',
 ];
 
-// Cache on install
-self.addEventListener("install", event => {
-    this.skipWaiting();
+// Install Event
+self.addEventListener('install', function(event) {
     event.waitUntil(
-        caches.open(staticCacheName)
-            .then(cache => {
-                return cache.addAll(filesToCache);
-            })
-    )
-});
-
-// Clear cache on activate
-self.addEventListener('activate', event => {
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
+        caches.open(staticCacheName).then(function(cache) {
+            // Intenta cachear los archivos uno por uno para evitar fallos
             return Promise.all(
-                cacheNames
-                    .filter(cacheName => (cacheName.startsWith("pwa-")))
-                    .filter(cacheName => (cacheName !== staticCacheName))
-                    .map(cacheName => caches.delete(cacheName))
+                filesToCache.map(function(url) {
+                    return cache.add(url).catch(function(error) {
+                        console.log('Failed to cache:', url, error);
+                        // Continúa aunque falle un archivo
+                        return Promise.resolve();
+                    });
+                })
             );
         })
     );
 });
 
-// Serve from Cache
-self.addEventListener("fetch", event => {
+// Fetch Event
+self.addEventListener('fetch', function(event) {
     event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                return response || fetch(event.request);
-            })
-            .catch(() => {
-                return caches.match('offline');
-            })
-    )
+        // Intenta obtener el recurso de la red primero
+        fetch(event.request).catch(function() {
+            return caches.match(event.request).then(function(response) {
+                // Si está en caché, devuélvelo
+                if (response) {
+                    return response;
+                }
+                // Si es una navegación, muestra la página offline
+                if (event.request.mode === 'navigate') {
+                    return caches.match('/offline');
+                }
+                // Para otros recursos, devuelve una respuesta vacía
+                return new Response('', {
+                    status: 404,
+                    statusText: 'Not found'
+                });
+            });
+        })
+    );
+});
+
+// Activate Event
+self.addEventListener('activate', function(event) {
+    event.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.filter(function(cacheName) {
+                    return cacheName.startsWith('pwa-') && cacheName !== staticCacheName;
+                }).map(function(cacheName) {
+                    return caches.delete(cacheName);
+                })
+            );
+        })
+    );
 });

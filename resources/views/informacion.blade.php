@@ -1,67 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <title>Jaydey</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/home.css">
-
-    @yield('head')
-    @include('layouts.header')
-
-</head>
-    <style>
-        .team-member {
-            transition: transform 0.3s ease;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-10px);
-        }
-
-        .member-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 20px;
-            border: 3px solid #28a745;
-        }
-
-        .social-icons a {
-            color: #28a745;
-            margin: 0 10px;
-            font-size: 20px;
-            transition: color 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            color: #1e7e34;
-        }
-
-        .feature-icon {
-            width: 100px;
-            height: 100px;
-            background-color: #28a745;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-        }
-
-        .feature-icon i {
-            font-size: 40px;
-            color: white;
-        }
-    </style>
-    @yield('head')
-    @include('layouts.header')
-</head>
-
+ @yield('head')
+@include('layouts.header')
 <body>
 
     <!-- Hero Section Start -->
@@ -176,35 +114,7 @@
             </div>
         </div>
     </div>
-    <!-- Features End -->
-
     @include('layouts.footer')
 
-    <!-- Destination Start -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="//js/animaciones.js"></script>
-    <script>
-        var aboutImage = document.getElementById('aboutImage');
-        var aboutText = document.getElementById('aboutText');
-
-
-        window.addEventListener('scroll', function () {
-            var scale = 1 + (window.scrollY / 800);
-
-            scale = Math.min(scale, 1.1);
-
-            aboutImage.style.transform = 'scale(' + scale + ')';
-            aboutText.style.transform = 'scale(' + scale + ')';
-        });
-            </script>
-    <!-- Paquetes y otros componentes -->
 </body>
 </html>

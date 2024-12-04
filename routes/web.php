@@ -59,9 +59,15 @@ Route::middleware(['auth', 'admin'])->prefix('admin/books')->name('admin.books.'
 
 Route::get('/offline', function () {
     return view('vendor.laravelpwa.offline');
-});
+})->name('offline');
 
 Route::get('/desarrolladores',[App\Http\Controllers\DesarrolladoresController::class, 'index'])->name('desarrolladores');
 Route::get('/desarrolladores', function () {
     return view('informacion');
 })->name('desarrolladores');
+
+Route::middleware(['web'])->group(function () {
+    Route::get('/offline', function () {
+        return view('vendor.laravelpwa.offline');
+    })->name('offline');
+});

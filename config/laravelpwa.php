@@ -14,43 +14,35 @@ return [
         'icons' => [
             '72x72' => [
                 'path' => '/images/icons/Jaydey-72X72.png',
-                'purpose' => 'any',
-                'sizes' => '72x72',
+                'purpose' => 'any maskable',
             ],
             '96x96' => [
                 'path' => '/images/icons/Jaydey-96X96.png',
-                'purpose' => 'any',
-                'sizes' => '96x96',
+                'purpose' => 'any maskable',
             ],
             '128x128' => [
                 'path' => '/images/icons/Jaydey-128X128.png',
-                'purpose' => 'any',
-                'sizes' => '128x128',
+                'purpose' => 'any maskable',
             ],
             '144x144' => [
                 'path' => '/images/icons/Jaydey144X144.png',
-                'purpose' => 'any',
-                'sizes' => '144x144',
+                'purpose' => 'any maskable',
             ],
             '152x152' => [
                 'path' => '/images/icons/Jaydey-152X152.png',
-                'purpose' => 'any',
-                'sizes' => '152x152',
+                'purpose' => 'any maskable',
             ],
             '192x192' => [
                 'path' => '/images/icons/Jaydey-192X192.png',
-                'purpose' => 'any',
-                'sizes' => '192x192',
+                'purpose' => 'any maskable',
             ],
             '384x384' => [
                 'path' => '/images/icons/Jaydey-384X384.png',
-                'purpose' => 'any',
-                'sizes' => '384x384',
+                'purpose' => 'any maskable',
             ],
             '512x512' => [
                 'path' => '/images/icons/Jaydey-512X512.png',
-                'purpose' => 'any',
-                'sizes' => '512x512',
+                'purpose' => 'any maskable',
             ],
         ],
         'splash' => [
@@ -73,12 +65,23 @@ return [
                 'icons' => [
                     "src" => "/images/icons/Jaydey-72X72.png",
                     'sizes' => '72x72',
-                    "purpose" => "any"
+                    'purpose' => 'any maskable'
                 ]
-                ],
+            ],
         ],
-        'custom' => [
-            'offline_page' => '/offline'
+       'custom' => [
+    'offline_page' => '/offline',
+    'cache_version' => 'v1',
+    'enabled' => true,
+    'files' => [
+        'css' => [
+            '/css/login.css',
+            '/css/home.css'
+        ],
+        'images' => [
+            '/images/icons/*'
         ]
+    ]
+]
     ]
 ];

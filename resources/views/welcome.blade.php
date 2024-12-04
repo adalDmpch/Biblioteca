@@ -1,23 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <title>Jaydey</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/home.css">
-
-    @yield('head')
-    @include('layouts.header')
-
-</head>
+@include('layouts.header')
 
 <style>
     #aboutImage,
     #aboutText {
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ase;
     }
 </style>
 <body>
@@ -315,87 +301,4 @@
             </div>
         </div>
     </div>
-    <!-- Packages End -->
-
-    <button id="toggleTestimonials" class="btn btn-success mt-1" style="display: block; margin: auto;">Ver Testimonios</button>
-
-    <div id="testimonialsContainer" class="container-fluid py-5">
-
-    <!-- Testimonial Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="text-center mb-3 pb-3">
-                <h6 class="text-success text-uppercase" style="letter-spacing: 5px;">Testimonios</h6>
-                <h1>Lo que dicen nuestros lectores</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel">
-                <div class="text-center pb-4">
-                    <img class="img-fluid mx-auto" src="/img/testimonial-1.jpg" style="width: 100px; height: 100px;" >
-                    <div class="testimonial-text bg-white p-4 mt-n5">
-                        <p class="mt-5">Encontre los mejores lirbos y tienen una gran variedad de increibles relatos 
-                        </p>
-                        <h5 class="text-truncate">Telma</h5>
-                        <span>01/05/2023</span>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <img class="img-fluid mx-auto" src="/img/testimonial-2.jpg" style="width: 100px; height: 100px;" >
-                    <div class="testimonial-text bg-white p-4 mt-n5">
-                        <p class="mt-5">Una de las mejores paginas de libros que he encontrado, pudes encontrar de una gran variedad de generos y autores
-                        </p>
-                        <h5 class="text-truncate">Angie Daniela</h5>
-                        <span>18/04/2023</span>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <img class="img-fluid mx-auto" src="/img/testimonial-3.jpg" style="width: 100px; height: 100px;" >
-                    <div class="testimonial-text bg-white p-4 mt-n5">
-                        <p class="mt-5">Nice, encontre el libro de Dumas y en pocas páginas se encuentran
-                        </p>
-                        <h5 class="text-truncate">Carlos</h5>
-                        <span>18/02/2023</span>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <img class="img-fluid mx-auto" src="/img/testimonial-4.jpg" style="width: 100px; height: 100px;" >
-                    <div class="testimonial-text bg-white p-4 mt-n5">
-                        <p class="mt-5">Dolor, alegria y tristesas, todo estos en cada uno de los libros que he leído aquí
-                        </p>
-                        <h5 class="text-truncate">Víctor Emilio</h5>
-                        <span>09/01/2023</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    @include('layouts.footer')
-
-    </div>
-    <!-- Destination Start -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="//js/animaciones.js"></script>
-    <script>
-        var aboutImage = document.getElementById('aboutImage');
-        var aboutText = document.getElementById('aboutText');
-
-
-        window.addEventListener('scroll', function () {
-            var scale = 1 + (window.scrollY / 800);
-
-            scale = Math.min(scale, 1.1);
-
-            aboutImage.style.transform = 'scale(' + scale + ')';
-            aboutText.style.transform = 'scale(' + scale + ')';
-        });
-            </script>
-    <!-- Paquetes y otros componentes -->
-</body>
 </html>

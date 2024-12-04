@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicia sesión</title>
+
+    @yield('head')
     <link rel="stylesheet" href="{{ asset('css/login.css') }}" >
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
     @include('layouts.header')
 </head>
 <body>
@@ -96,10 +90,6 @@
         </div>
     </div>
     @include('layouts.footer')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
     <script>
     function togglePassword() {
         const passwordInput = document.getElementById('password');

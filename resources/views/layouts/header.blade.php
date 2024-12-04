@@ -1,37 +1,24 @@
-<!-- resources/views/layouts/header.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#000000">
     <title>@yield('title', 'Jaydey')</title>
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <!-- Favicon -->
-    <link href="{{ asset('img/favicon.ico') }}" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
-
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-@laravelPWA
-    <!-- Estilos adicionales -->
+    @laravelPWA
     @stack('styles')
-
 </head>
 <body>
+    <noscript>
+        <div class="alert alert-warning text-center" role="alert">
+            Esta aplicación requiere JavaScript para funcionar correctamente.
+        </div>
+    </noscript>
+
     <!-- Navbar Start -->
     <div class="container-fluid position-fixed nav-bar p-0 fixed-top">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
@@ -102,49 +89,86 @@
     
     <div style="margin-top: 90px;"></div>
 
-
     <main>
         @yield('content')
     </main>
 
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script>
-    $(document).ready(function() {
-        $('.dropdown-toggle').dropdown();
+        $(document).ready(function() {
+            $('.dropdown-toggle').dropdown();
 
-        $('.logout-form').on('submit', function(e) {
-            e.preventDefault();
-            $.ajax({
-                url: $(this).attr('action'),
-                method: 'POST',
-                data: $(this).serialize(),
-                success: function(response) {
-                    window.location.href = '{{ route('home') }}';
-                },
-                error: function(xhr) {
-                    console.error('Error al cerrar sesión');
-                }
+            $('.logout-form').on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        window.location.href = '{{ route('home') }}';
+                    },
+                    error: function(xhr) {
+                        console.error('Error al cerrar sesión');
+                    }
+                });
             });
         });
-    });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async function() {
+                try {
+                    const registration = await navigator.serviceWorker.register('/serviceworker.js');
+                    console.log('ServiceWorker registrado exitosamente con alcance: ', registration.scope);
+                } catch (err) {
+                    console.log('Error al registrar ServiceWorker: ', err);
+                }
+            });
+        }
+
+        let isOfflinePage = window.location.pathname === '/offline';
+
+        function updateOnlineStatus() {
+            if (!navigator.onLine && !isOfflinePage) {
+                sessionStorage.setItem('lastPage', window.location.href);
+                window.location.href = '/offline';
+            }
+        }
+
+        window.addEventListener('online', function() {
+            if (isOfflinePage) {
+                const lastPage = sessionStorage.getItem('lastPage');
+                if (lastPage) {
+                    window.location.href = lastPage;
+                } else {
+                    window.location.href = '/';
+                }
+            }
+        });
+        
+        window.addEventListener('offline', updateOnlineStatus);
+        
+        if ('Notification' in window) {
+            Notification.requestPermission().then(function(permission) {
+                if (permission === 'granted') {
+                    if (!navigator.onLine) {
+                        new Notification('Sin conexión', {
+                            body: 'La aplicación está funcionando en modo offline',
+                            icon: '/images/icons/Jaydey-72X72.png'
+                        });
+                    }
+                }
+            });
+        }
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            window.deferredPrompt = e;
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!navigator.onLine && !isOfflinePage) {
+                updateOnlineStatus();
+            }
+        });
     </script>
+
     @stack('scripts')
 </body>
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/sw.js')
-                .then(function(registration) {
-                    console.log('ServiceWorker registration successful');
-                })
-                .catch(function(err) {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-        });
-    }
-</script>
 </html>
